@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 gem 'nested_scaffold'
+gem "view_component", require: "view_component/engine"
+
 
 
 group :development, :test do
