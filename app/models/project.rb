@@ -2,17 +2,6 @@ class Project < ApplicationRecord
   has_many :tasks, :dependent => :destroy
   belongs_to :user
 
-  def badge_color 
-    case status
-    when 'not-started'
-      'secondary'
-    when 'in-progress'
-      'info'
-    when 'completed'
-      'success'
-    end
-  end
-
   def status
     return 'not-started' if tasks.none?
 
