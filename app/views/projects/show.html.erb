@@ -44,9 +44,7 @@
       <h4>Tasks</h4>
       <article data-controller="tasks">
         <ul id="task-list" data-action="drop->tasks#sort">
-          <% @project.tasks.order(position: :asc).each do |task| %>
-              <%= render(TaskComponent.new(task: task)) %>
-          <% end %>
+          <%= render(TaskComponent.with_collection(@project.tasks.order(position: :asc))) %>
         </ul>
       </article>
     </section>

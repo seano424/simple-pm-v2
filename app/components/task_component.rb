@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class TaskComponent < ViewComponent::Base
+  extend Forwardable
+
+  def_delegators :@task, :status, :id, :name, :description, :persisted?, :project
+
+  with_collection_parameter :task
   attr_reader :task
 
   def initialize(task:)
@@ -8,26 +13,11 @@ class TaskComponent < ViewComponent::Base
   end
 
   def render?
-    task.persisted?
-  end
-
-  def status
-    task.status
-  end
-
-  def project
-    task.project
+    persisted?
   end
 
   def task_id
-    task.id
+    id
   end
 
-  def name
-    task.name
-  end
-
-  def description
-    task.description
-  end
 end
