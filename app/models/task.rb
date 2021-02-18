@@ -9,17 +9,6 @@ class Task < ApplicationRecord
     ['Completed', 'completed'],
   ]
 
-  def readable_status
-    case status
-    when 'not-started'
-      'Not started'
-    when 'in-progress'
-      'In progress'
-    when 'completed'
-      'Completed'
-    end
-  end
-
   def completed?
     status == 'completed'
   end
